@@ -4,5 +4,5 @@
 ## Instructions:
 There are two parts in this application:
 - crawler: web scraper to extract and collect info from stackover flow. More details you can refer to 'README' in the folder.
-- application: web application using lambda archtecture and nodeJS to show fancy and interesting results after exploring stackoverflow.
+- application: web application using the Lambda archtecture and nodeJS to show fancy and interesting results after exploring stackoverflow.
 
