@@ -1,0 +1,25 @@
+##Web Crawler System
+
+### Usage:
+For crawler_seq.go:
+go run crawler_seq.go <file>
+	file = the input file name(place the file to the folder of crawler_seq.go
+	before running the program)
+
+For crawler_para.go:
+go run crawler_para.go <file> <threads>
+	file = the input file name(place the file to the folder of crawler_seq.go
+	before running the program)
+	threads = the number of threads(including the main thread)
+
+### Notice:
+
+1.  As this is a web crawler for stackoverflow, please keep in mind that stackoverflow is
+monitoring unusual high number of requests. If you run the programe frequently or run against
+with large file, your ip will be temporarily rate limited, then you will get empty or partial results. 
+	*If you want to check the correctness,just run against a small file(may be 10 urls)
+	*If you want to do timing, you may need to run and wait for a while, or use different ip
+2. They are question numbers don't really exist in stackoverflow now, and this will cause a redirection. So the result may not be consistent with ground truth data.
+
+I am so sorry for the inconvience, but i think this is the common problem for web crawler.
+Hope you can enjoy it!
