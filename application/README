@@ -1,5 +1,8 @@
 # Web Application
 
+### Note:
+Google Cloud server will shut down by January 2019!
+
 ### Overview
 
 My project focuses on doing interesting analysis and statistics of stackoverflow data. This is initial version, I finished batch layer, serve layer and speed layer.
