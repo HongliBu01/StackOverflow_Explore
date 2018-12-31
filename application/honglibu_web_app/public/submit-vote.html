@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html>
+  <head>
+    <title>Excellent User</title>
+    <link type="text/css" rel="stylesheet" href="/elegant-aero.css" />
+    <style>
+     #inputContainer {
+    width: 300px;
+    float: center
+     }
+    #inputContainer label {
+    float: center;
+    margin-right: 5px;
+    background: #5E5E5E
+    }
+   #inputContainer div {
+    overflow: hidden;
+    }
+    #inputContainer input {
+    width: 100%;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    display: block;
+    margin-left:auto;
+    margin-right:auto;
+    } 
+    </style>
+  </head>
+  <body style='background-image:URL("stackoverflow.jpeg");background-repeat:no-repeat;background-position:center top;-webkit-background-size:100%;-moz-background-si
+ze:100%;-o-background-size:100%;background-size: 100%;'>
+    <p style="margin-bottom:5px"/>
+    <h2 class="elegant-aero" style="margin-left:40%;text-align:center;display:inline-block;color:#5E5E5E;background:#FFFFFF">&nbsp;Vote for Top 10 Active Users&nbsp;</h2>
+    <center><form action="/active_users.html"  method="get">
+    <div class = "elegant-areo" id = inputContainer>
+          <label>
+          <span>Name:</span>
+            <br>
+            <select name="idAndName" size="1">
+              <option value="1144035+Gordon Linoff">Gordon Linoff</option>
+              <option value="22656+Jon Skeet">Jon Skeet</option>
+              <option value="29407+Darin Dimitrov">Darin Dimitrov</option>
+              <option value="548225+anubhava">anubhava</option>
+              <option value="115145+CommonsWare">CommonsWare</option>
+              <option value="6309+VonC">VonC</option>
+              <option value="100297+Martijn Pieters">Martijn Pieters</option>
+              <option value="1491895+Barmar">Barmar</option>
+              <option value="19068+Quentin">Quentin</option>
+              <option value="157882+BalusC">BalusC</option>
+              </select>
+          </label>
+    </div> 
+    <div class = "elegant-areo" id = inputContainer>
+       <input type="submit" value="Vote">
+    </div>
+   </form></center>
+    <iframe frameBorder="0" name="results_iframe" style="width:100%"/>
+  </body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html>
+  <head>
+    <title>Excellent User</title>
+    <link type="text/css" rel="stylesheet" href="/elegant-aero.css" />
+    <style>
+     #inputContainer {
+    width: 300px;
+    float: center
+     }
+    #inputContainer label {
+    float: center;
+    margin-right: 5px;
+    background: #5E5E5E
+    }
+   #inputContainer div {
+    overflow: hidden;
+    }
+    #inputContainer input {
+    width: 100%;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    display: block;
+    margin-left:auto;
+    margin-right:auto;
+    } 
+    </style>
+  </head>
+  <body style='background-image:URL("stackoverflow.jpeg");background-repeat:no-repeat;background-position:center top;-webkit-background-size:100%;-moz-background-si
+ze:100%;-o-background-size:100%;background-size: 100%;'>
+    <p style="margin-bottom:5px"/>
+    <h2 class="elegant-aero" style="margin-left:40%;text-align:center;display:inline-block;color:#5E5E5E;background:#FFFFFF">&nbsp;Report Excellent Users&nbsp;</h2>
+    <center><form action="/users.html"  method="get">
+    <div class = "elegant-areo" id = inputContainer>
+         <label>
+          <span>Ranking:</span>
+          <input type="number" name="ranking" min="1" max="10000" value ="1" required/>
+          </label>
+         <label>
+    </div>
+    <div class = "elegant-areo" id = inputContainer>
+       <input type="submit" value="Show Users">
+    </div>
+   </form></center>
+    <iframe frameBorder="0" name="results_iframe" style="width:100%"/>
+  </body>
+</html>
