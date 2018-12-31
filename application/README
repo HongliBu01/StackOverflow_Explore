@@ -1,0 +1,63 @@
+# Final project -- stackoverflow rankings
+
+### Overview
+
+My project focuses on doing interesting analysis and statistics of stackoverflow data. This is initial version, I finished batch layer, serve layer and speed layer.
+Here are my urls:
+
+http://35.225.120.103:3192/excellent-users.html
+http://35.225.120.103:3192/best-questions.html
+http://35.225.120.103:3192/submit-vote.html
+
+
+### Data source
+
+I got the data from Bigquery public datasets. Here is the link:https://console.cloud.google.com/bigquery?project=mpcs53013-2018&p=bigquery-public-data&d=stackoverflow&page=dataset.
+The CSV file size is about 4.7 GB.
+
+### Batch view
+
+See `hql` folder for all `.hql` files.
+
+I created my batch views in the following steps:
+
+- Run `posts_questions.hql, posts_answers.hql, posts_users.hql, posts_tag.hql` to load all stackoverflow data into hive.
+
+- Run `excellent_users.hql` to get users who has highest reputation in stackoverflow.
+
+- Run `best_questions_2018.hql` to extract questions with highest scores and corresponding answers between 2008 to 2018. (when running it, just change 'year' field to get info for different years )
+
+- Run `active_users.hql` to sort users according to their answer amount.
+
+- Run `popular_tags.hql` to find tags and their occurrences.
+
+### Hbase
+
+I wrote hive tables to Hbase in the following steps:
+
+- Run `hbase_excellent_users.hql` to  generate hbase table `honglibu_hbase_excellent_users`.
+
+- Run `hbase_best_questions_2018.hql` to generate hbase tables  `honglibu_hbase_best_questions_xxxx`.
+
+
+### Web interface
+
+See `honglibu_web_app` folder for sources codes of web interces.
+
+##### html:
+
+- `excellent-users.html` displays a form for user to search excellent stackoverflow users with a certain ranking.
+- `best-questions.html` displays a form for user to search best questions with a certain ranking and year.
+
+
+### Speed Layer
+
+In Kafka I created topic `honglibu_active_users` to listen to recent votes for top10 active users of Stack Overflow.
+
+You may use http://35.225.120.103:3192/submit-vote.html to vote for the users
+
+For speed layer table, I created a `honglibu_hbase_active_users` table in hbase.
+
+```
+hbase(main):003:0> create 'honglibu_hbase_active_users', 'users'
+```
