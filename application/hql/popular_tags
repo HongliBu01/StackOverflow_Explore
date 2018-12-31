@@ -1,0 +1,14 @@
+create external table if not exists honglibu_popular_tags (
+    id int,
+    tag_name string,
+    count int,
+    excerpt_post_id int,
+    wiki_post_id int
+) 
+stored as orc;
+
+insert overwrite table honglibu_popular_tags
+  select *
+  from honglibu_orc_posts_tags
+  order by count
+  desc;

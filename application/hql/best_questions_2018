@@ -1,0 +1,43 @@
+create external table if not exists honglibu_best_questions_2018 (
+    id int,
+    title string,
+    answer_count int,
+    comment_count int,
+    creation_date timestamp,
+    favorite_count int,
+    owner_user_id int,
+    owner_display_name string,
+    score int,
+    tags string,
+    view_count int,
+    accepted_answer_id int,
+    accepted_answer_creation_date timestamp,
+    accepted_answer_owner_user_id int,
+    accepted_answer_owner_display_name string
+) 
+stored as orc;
+
+insert overwrite table honglibu_best_questions_2018
+  select 
+    q.id,
+    q.title,
+    q.answer_count,
+    q.comment_count,
+    q.creation_date,
+    q.favorite_count,
+    q.owner_user_id,
+    q.owner_display_name,
+    q.score,
+    q.tags,
+    q.view_count,
+    q.accepted_answer_id,
+    a.creation_date AS accepted_answer_creation_date,
+    a.owner_user_id AS accepted_answer_owner_user_id,
+    a.owner_display_name AS accepted_answer_owner_display_name
+  from honglibu_orc_posts_questions q
+  left join
+  honglibu_orc_posts_answers a
+  on q.accepted_answer_id = a.id
+  where YEAR(q.creation_date) = 2018
+  order by q.score
+  desc;

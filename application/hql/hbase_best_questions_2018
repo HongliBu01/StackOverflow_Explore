@@ -1,0 +1,41 @@
+create external table honglibu_hbase_best_questions_2018 (
+    ranking bigint,
+    id bigint,
+    title string,
+    answer_count bigint,
+    comment_count bigint,
+    creation_date timestamp,
+    favorite_count bigint,
+    owner_user_id bigint,
+    owner_display_name string,
+    score bigint,
+    tags string,
+    view_count bigint,
+    accepted_answer_id bigint,
+    accepted_answer_creation_date timestamp,
+    accepted_answer_owner_user_id bigint,
+    accepted_answer_owner_display_name string)
+STORED BY 'org.apache.hadoop.hive.hbase.HBaseStorageHandler'
+WITH SERDEPROPERTIES ('hbase.columns.mapping' = ':key,questions:id, questions:title, questions:answer_count, questions:comment_count,questions:creation_date,questions:favorite_count,questions:owner_user_id,questions:owner_display_name,questions:score,questions:tags,questions:view_count,questions:accepted_answer_id,questions:accepted_answer_creation_date,questions:accepted_answer_owner_user_id,questions:accepted_answer_owner_display_name')
+TBLPROPERTIES ('hbase.table.name' = 'honglibu_hbase_best_questions_2018');
+
+insert overwrite table honglibu_hbase_best_questions_2018
+select
+    row_number()over(order by score desc) AS ranking,
+    id,
+    title,
+    answer_count,
+    comment_count,
+    creation_date,
+    favorite_count,
+    owner_user_id,
+    owner_display_name,
+    score,
+    tags,
+    view_count,
+    accepted_answer_id,
+    accepted_answer_creation_date,
+    accepted_answer_owner_user_id,
+    accepted_answer_owner_display_name
+ from honglibu_best_questions_2018
+ limit 100;

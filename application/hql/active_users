@@ -1,0 +1,27 @@
+create external table if not exists honglibu_active_users (
+    id int,
+    display_name string,
+    creation_date timestamp,
+    reputation int,
+    answer_num int
+) 
+stored as orc;
+
+insert overwrite table honglibu_active_users
+  select
+    u.id,
+    u.display_name,
+    u.creation_date,
+    u.reputation,
+    a.answer_num
+  from (
+  select 
+  owner_user_id,
+  count (1) AS answer_num
+  from honglibu_orc_posts_answers
+  group by owner_user_id
+  ) a
+  inner join honglibu_orc_posts_users u
+  on a.owner_user_id = u.id
+  order by a.answer_num
+  desc;
